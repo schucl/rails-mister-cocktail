@@ -1,0 +1,44 @@
+
+<div class="container">
+  <h2>This is Coctail Details Page</h2>
+  <h3> <%= @cocktail.name %></h3>
+
+  <ul>
+    <% @cocktail.doses.each do |dose| %>
+      <li>
+        <strong>Ingredient: </strong> <%= dose.ingredient.name %>,
+       <strong> Quantity: </strong><%= dose.description %>
+      </li>
+    <% end %>
+  </ul>
+
+
+
+<div class="container">
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
+
+ <div class="form-inputs">
+    <%= f.input :description %>
+    </div>
+  <div class="form-inputs">
+    <%= f.association :ingredient %>
+    </div>
+  <div class="form-inputs">
+    <%= f.submit "add a dose", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+  <br>
+    <button type="button" class="btn btn-primary">
+      <%= link_to "Back", cocktails_path %>
+    </button>
+    <button type="button" class="btn btn-primary">
+      <%= link_to "Edit", edit_cocktail_path(@cocktail) %>
+    </button>
+    <button type="button" class="btn btn-danger">
+      <%= link_to "Delete", cocktail_path(@cocktail), method: :delete %>
+    </button>
+
+    <br><br>
+</div>

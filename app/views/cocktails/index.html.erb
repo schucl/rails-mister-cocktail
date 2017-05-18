@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Cocktail List</h1>
+
+  <br><br>
+  <button type="button" class="btn btn-primary">
+   <%= link_to "Add Cocktail", new_cocktail_path %>
+  </button>
+  <br><br><br>
+
+  <% @cocktails.each do |cocktail| %>
+    <strong>Cocktail Name:</strong>  <%= cocktail.name %>
+    <br>
+    <button type="button" class="btn btn-primary">
+      <%= link_to "Details", cocktail_path(cocktail) %>
+    </button>
+    <button type="button" class="btn btn-primary">
+      <%= link_to "Edit", edit_cocktail_path(cocktail) %>
+    </button>
+    <button type="button" class="btn btn-danger">
+      <%= link_to "Delete", cocktail_path(cocktail), method: :delete %>
+    </button>
+    <br><br>
+  <% end  %>
+</div>
+
