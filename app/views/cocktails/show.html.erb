@@ -1,6 +1,6 @@
 
 <div class="container">
-  <h2>This is Coctail Details Page</h2>
+  <h2>This is Cocktail Details Page</h2>
   <h3> <%= @cocktail.name %></h3>
 
   <ul>
@@ -29,16 +29,33 @@
   <% end %>
 </div>
 
-  <br>
-    <button type="button" class="btn btn-primary">
-      <%= link_to "Back", cocktails_path %>
-    </button>
-    <button type="button" class="btn btn-primary">
-      <%= link_to "Edit", edit_cocktail_path(@cocktail) %>
-    </button>
-    <button type="button" class="btn btn-danger">
-      <%= link_to "Delete", cocktail_path(@cocktail), method: :delete %>
-    </button>
+<br>
 
-    <br><br>
+<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+
+
+
+
+<button type="button" class="btn btn-primary">
+  <%= link_to "Back", cocktails_path %>
+</button>
+<button type="button" class="btn btn-primary">
+  <%= link_to "Edit", edit_cocktail_path(@cocktail) %>
+</button>
+<button type="button" class="btn btn-danger">
+  <%= link_to "Delete", cocktail_path(@cocktail), method: :delete %>
+</button>
+<br><br>
+</div>
+
+
+<div class="card"
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @cocktail.photo, height: 300, width: 400, crop: :fill %>')">
+  <div class="card-category">Popular</div>
+  <div class="card-description">
+    <h2>Some stuff</h2>
+    <p>Very cool stuff, useful and smart</p>
+  </div>
+  <a class="card-link" href="#" ></a>
 </div>
