@@ -1,0 +1,75 @@
+<div class="container">
+  <h1>Cocktail List</h1>
+
+  <br><br>
+  <button type="button" class="btn btn-primary">
+   <%= link_to "Add Cocktail", new_cocktail_path %>
+  </button>
+  <br><br><br>
+
+  <% @cocktails.each do |cocktail| %>
+    <strong>Cocktail Name:</strong>  <%= cocktail.name %>
+    <br>
+    <button type="button" class="btn btn-primary">
+      <%= link_to "Details", cocktail_path(cocktail) %>
+    </button>
+    <button type="button" class="btn btn-primary">
+      <%= link_to "Edit", edit_cocktail_path(cocktail) %>
+    </button>
+    <button type="button" class="btn btn-danger">
+      <%= link_to "Delete", cocktail_path(cocktail), method: :delete %>
+    </button>
+    <br><br>
+  <% end  %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <% if @cocktails.photos? %>
+  <div class="card"
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @cocktail.photos.first.path, height: 300, width: 400, crop: :fill %>')">
+<% else %>
+  <div class="card"
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+<% end %>
+  <div class="card-category">Popular</div>
+
+  <div class="card-description">
+    <h2>Some stuff</h2>
+    <p>Very cool stuff, useful and smart</p>
+  </div>
+  <a class="card-link" href="#" ></a>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
+  <div class="card-category">Popular</div>
+  <div class="card-description">
+    <h2>Some stuff</h2>
+    <p>Very cool stuff, useful and smart</p>
+  </div>
+  <img class="card-user avatar" src="user.jpg">
+  <a class="card-link" href="#" ></a>
+</div>
+ -->

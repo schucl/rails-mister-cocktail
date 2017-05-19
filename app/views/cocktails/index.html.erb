@@ -1,25 +1,42 @@
 <div class="container">
   <h1>Cocktail List</h1>
-
   <br><br>
   <button type="button" class="btn btn-primary">
    <%= link_to "Add Cocktail", new_cocktail_path %>
-  </button>
-  <br><br><br>
-
-  <% @cocktails.each do |cocktail| %>
-    <strong>Cocktail Name:</strong>  <%= cocktail.name %>
-    <br>
-    <button type="button" class="btn btn-primary">
-      <%= link_to "Details", cocktail_path(cocktail) %>
-    </button>
-    <button type="button" class="btn btn-primary">
-      <%= link_to "Edit", edit_cocktail_path(cocktail) %>
-    </button>
-    <button type="button" class="btn btn-danger">
-      <%= link_to "Delete", cocktail_path(cocktail), method: :delete %>
-    </button>
-    <br><br>
-  <% end  %>
+ </button>
 </div>
 
+
+
+<div class="container">
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+    <% if cocktail.photos.empty? %>
+    <% my_photo_url = 'http://placehold.it/350x150' %>
+    <% else %>
+    <%# my_photo_url = "http://res.cloudinary.com/dqzgcidau/image/upload/" + cocktail.photos.first.path %>
+    <% my_photo_url = cl_image_path cocktail.photos.first.path %>
+    <%# raise %>
+    <% end %>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= my_photo_url %>);">
+        <div class="card-category">Cocktail</div>
+        <div class="card-description">
+          <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+        <%= link_to "", cocktail_path(cocktail), class: "card-link"  %>
+        <button type="button" class="btn btn-primary">
+          <%= link_to "Details", cocktail_path(cocktail) %>
+        </button>
+        <button type="button" class="btn btn-primary">
+          <%= link_to "Edit", edit_cocktail_path(cocktail) %>
+        </button>
+        <button type="button" class="btn btn-danger">
+          <%= link_to "Delete", cocktail_path(cocktail), method: :delete %>
+        </button>
+        </div>
+      </div>
+      </div>
+    <% end %>
+  </div>
+</div>

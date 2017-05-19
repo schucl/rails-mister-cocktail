@@ -12,6 +12,22 @@
     <% end %>
   </ul>
 
+<% if @cocktail.photos? %>
+  <div class="card"
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @cocktail.photos.first.path, height: 300, width: 400, crop: :fill %>')">
+<% else %>
+  <div class="card"
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+<% end %>
+  <div class="card-category">Popular</div>
+
+  <div class="card-description">
+    <h2>Some stuff</h2>
+    <p>Very cool stuff, useful and smart</p>
+  </div>
+  <a class="card-link" href="#" ></a>
+</div>
 
 
 <div class="container">
@@ -31,8 +47,9 @@
 
 <br>
 
-<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-
+<% @cocktail.photos.each do |photo| %>
+  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+<% end %>
 
 
 
@@ -49,13 +66,3 @@
 </div>
 
 
-<div class="card"
-  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path @cocktail.photo, height: 300, width: 400, crop: :fill %>')">
-  <div class="card-category">Popular</div>
-  <div class="card-description">
-    <h2>Some stuff</h2>
-    <p>Very cool stuff, useful and smart</p>
-  </div>
-  <a class="card-link" href="#" ></a>
-</div>
